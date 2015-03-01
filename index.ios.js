@@ -13,6 +13,16 @@ var {
 } = React;
 
 var v2hot = React.createClass({
+  componentDidMount: function() {
+    fetch('https://www.v2ex.com/api/topics/hot.json')
+      .then((response) => response.json())
+      .then((responseData) => {
+        this.setState({
+          topics: 
+        });
+      })
+      .done();
+  },
   render: function() {
     return (
       <View style={styles.container}>
