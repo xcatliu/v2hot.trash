@@ -18,7 +18,7 @@ var v2hot = React.createClass({
       .then((response) => response.json())
       .then((responseData) => {
         this.setState({
-          topics: 
+          topics: responseData
         });
       })
       .done();
