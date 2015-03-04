@@ -32,17 +32,7 @@ var v2hot = React.createClass({
     return (
       <View style={styles.container}>
         <Text>
-          Hello World!
-        </Text>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+Control+Z for dev menu
+          {this.state.topics}
         </Text>
       </View>
     );
