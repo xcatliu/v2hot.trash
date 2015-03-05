@@ -10,12 +10,14 @@ var {
   StyleSheet,
   Text,
   View,
+  ListView
 } = React;
 
 var v2hot = React.createClass({
   getInitialState: function() {
+    var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     return {
-      topics: null
+      dataSource: ds.cloneWithRows(['row 1', 'row 2']),
     };
   },
   componentDidMount: function() {
@@ -30,11 +32,10 @@ var v2hot = React.createClass({
   },
   render: function() {
     return (
-      <View style={styles.container}>
-        <Text>
-          {this.state.topics}
-        </Text>
-      </View>
+      <ListView
+        dataSource={this.state.dataSource}
+        renderRow={(rowData) => <Text>{rowData}</Text>}
+      />
     );
   }
 });
