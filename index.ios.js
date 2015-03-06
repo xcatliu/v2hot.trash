@@ -17,7 +17,7 @@ var v2hot = React.createClass({
   getInitialState: function() {
     var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     return {
-      dataSource: ds.cloneWithRows(['row 1', 'row 2']),
+      dataSource: ds.cloneWithRows(['row 1', 'row 2', 'row 3', 'row 2', 'row 2', 'row 2']),
     };
   },
   componentDidMount: function() {
@@ -34,7 +34,7 @@ var v2hot = React.createClass({
     return (
       <ListView
         dataSource={this.state.dataSource}
-        renderRow={(rowData) => <Text>{rowData}</Text>}
+        renderRow={(rowData) => <Text>Hello World</Text>}
       />
     );
   }
