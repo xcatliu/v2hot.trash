@@ -39,7 +39,7 @@ var v2hot = React.createClass({
     );
   }
 });
-
+/*
 var styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -58,5 +58,6 @@ var styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
+*/
 
 AppRegistry.registerComponent('v2hot', () => v2hot);
