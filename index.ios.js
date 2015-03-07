@@ -43,7 +43,7 @@ var v2hot = React.createClass({
 var styles = StyleSheet.create({
   listView: {
     backgroundColor: '#FFF'
-  }
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
