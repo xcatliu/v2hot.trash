@@ -33,14 +33,17 @@ var v2hot = React.createClass({
   render: function() {
     return (
       <ListView
+        style={styles.listView}
         dataSource={this.state.dataSource}
         renderRow={(rowData) => <Text>Hello World</Text>}
       />
     );
   }
 });
-/*
 var styles = StyleSheet.create({
+  listView: {
+    backgroundColor: '#FFF'
+  }
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -58,6 +61,5 @@ var styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
-*/
 
 AppRegistry.registerComponent('v2hot', () => v2hot);
