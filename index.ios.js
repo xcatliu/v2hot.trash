@@ -68,19 +68,4 @@ var styles = StyleSheet.create({
   },
 });
 
-var React = require('react-native');
-var { TabBarIOS, NavigatorIOS } = React;
-
-var App = React.createClass({
-  render: function() {
-    return (
-      <TabBarIOS>
-        <TabBarIOS.Item title="React Native" selected={true}>
-          <NavigatorIOS initialRoute={{ title: 'React Native' }} />
-        </TabBarIOS.Item>
-      </TabBarIOS>
-    );
-  },
-});
-
 AppRegistry.registerComponent('v2hot', () => App);
