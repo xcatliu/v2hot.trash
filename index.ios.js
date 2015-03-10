@@ -67,7 +67,6 @@ var styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
-*/
 
 var React = require('react-native');
 var { TabBarIOS, NavigatorIOS } = React;
