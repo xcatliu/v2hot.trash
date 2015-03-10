@@ -4,6 +4,7 @@
  */
 'use strict';
 
+/*
 var React = require('react-native');
 var {
   AppRegistry,
@@ -67,5 +68,21 @@ var styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
+*/
 
-AppRegistry.registerComponent('v2hot', () => v2hot);
+var React = require('react-native');
+var { TabBarIOS, NavigatorIOS } = React;
+
+var App = React.createClass({
+  render: function() {
+    return (
+      <TabBarIOS>
+        <TabBarIOS.Item title="React Native" selected={true}>
+          <NavigatorIOS initialRoute={{ title: 'React Native' }} />
+        </TabBarIOS.Item>
+      </TabBarIOS>
+    );
+  },
+});
+
+AppRegistry.registerComponent('v2hot', () => App);
