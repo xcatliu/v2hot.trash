@@ -5,13 +5,17 @@
 'use strict';
 
 var React = require('react-native');
+
+var MOCKED_MOVIES_DATA = [
+  {title: 'Title', year: '2015', posters: {thumbnail: 'http://i.imgur.com/UePbdph.jpg'}},
+];
+
 var {
   AppRegistry,
+  Image,
   StyleSheet,
   Text,
   View,
-  ListView,
-  Navigator
 } = React;
 
 var v2hot = React.createClass({
@@ -65,6 +69,21 @@ var styles = StyleSheet.create({
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5,
+  },
+});
+
+var React = require('react-native');
+var { TabBarIOS, NavigatorIOS } = React;
+
+var App = React.createClass({
+  render: function() {
+    return (
+      <TabBarIOS>
+        <TabBarIOS.Item title="React Native" selected={true}>
+          <NavigatorIOS initialRoute={{ title: 'React Native' }} />
+        </TabBarIOS.Item>
+      </TabBarIOS>
+    );
   },
 });
 
