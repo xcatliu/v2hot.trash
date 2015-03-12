@@ -36,17 +36,13 @@ var v2hot = React.createClass({
       .done();
   },
   render: function() {
+    var movie = MOCKED_MOVIES_DATA[0];
     return (
-      <Navigator
-        initialRoute={{name: 'My First Scene', index: 0}}
-        renderScene={(route, navigator) =>
-          <ListView
-            style={styles.listView}
-            dataSource={this.state.dataSource}
-            renderRow={(rowData) => <Text>Hello World</Text>}
-          />
-        }
-      />
+      <View style={styles.container}>
+        <Text>{movie.title}</Text>
+        <Text>{movie.year}</Text>
+        <Image source={{uri: movie.posters.thumbnail}} />
+      </View>
     );
   }
 });
