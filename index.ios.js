@@ -18,23 +18,7 @@ var {
   View,
 } = React;
 
-var v2hot = React.createClass({
-  getInitialState: function() {
-    var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    return {
-      dataSource: ds.cloneWithRows(['row 1', 'row 2', 'row 3', 'row 2', 'row 2', 'row 2']),
-    };
-  },
-  componentDidMount: function() {
-    fetch('https://www.v2ex.com/api/topics/hot.json')
-      .then((response) => response.json())
-      .then((responseData) => {
-        this.setState({
-          topics: responseData
-        });
-      })
-      .done();
-  },
+var V2hot = React.createClass({
   render: function() {
     var movie = MOCKED_MOVIES_DATA[0];
     return (
@@ -46,41 +30,18 @@ var v2hot = React.createClass({
     );
   }
 });
+
 var styles = StyleSheet.create({
-  listView: {
-    backgroundColor: '#FFF'
-  },
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  thumbnail: {
+    width: 53,
+    height: 81,
   },
 });
 
-var React = require('react-native');
-var { TabBarIOS, NavigatorIOS } = React;
-
-var App = React.createClass({
-  render: function() {
-    return (
-      <TabBarIOS>
-        <TabBarIOS.Item title="React Native" selected={true}>
-          <NavigatorIOS initialRoute={{ title: 'React Native' }} />
-        </TabBarIOS.Item>
-      </TabBarIOS>
-    );
-  },
-});
-
-AppRegistry.registerComponent('v2hot', () => App);
+AppRegistry.registerComponent('v2hot', () => V2hot);
