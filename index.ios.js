@@ -25,7 +25,10 @@ var V2hot = React.createClass({
       <View style={styles.container}>
         <Text>{movie.title}</Text>
         <Text>{movie.year}</Text>
-        <Image source={{uri: movie.posters.thumbnail}} />
+        <Image
+          source={{uri: movie.posters.thumbnail}}
+          style={styles.thumbnail}
+        />
       </View>
     );
   }
