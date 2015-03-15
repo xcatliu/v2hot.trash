@@ -48,6 +48,17 @@ var styles = StyleSheet.create({
     width: 53,
     height: 81,
   },
+  rightContainer: {
+    flex: 1,
+  },
+  title: {
+    fontSize: 20,
+    marginBottom: 8,
+    textAlign: 'center',
+  },
+  year: {
+    textAlign: 'center',
+  },
 });
 
 AppRegistry.registerComponent('v2hot', () => V2hot);
