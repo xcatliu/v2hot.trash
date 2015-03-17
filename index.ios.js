@@ -30,6 +30,9 @@ var V2hot = React.createClass({
       movies: null,
     };
   },
+  componentDidMount: function() {
+    this.fetchData();
+  },
   render: function() {
     var movie = MOCKED_MOVIES_DATA[0];
     return (
