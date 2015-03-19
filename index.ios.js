@@ -19,6 +19,7 @@ var MOCKED_MOVIES_DATA = [
 var {
   AppRegistry,
   Image,
+  ListView,
   StyleSheet,
   Text,
   View,
