@@ -28,7 +28,10 @@ var {
 var V2hot = React.createClass({
   getInitialState: function() {
     return {
-      movies: null,
+      dataSource: new ListView.DataSource({
+        rowHasChanged: (row1, row2) => row1 !== row2,
+      }),
+      loaded: false,
     };
   },
   componentDidMount: function() {
