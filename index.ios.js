@@ -108,6 +108,10 @@ var styles = StyleSheet.create({
   year: {
     textAlign: 'center',
   },
+  listView: {
+    paddingTop: 20,
+    backgroundColor: '#F5FCFF',
+  },
 });
 
 AppRegistry.registerComponent('v2hot', () => V2hot);
