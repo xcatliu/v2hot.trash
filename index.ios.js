@@ -42,7 +42,8 @@ var V2hot = React.createClass({
       .then((response) => response.json())
       .then((responseData) => {
         this.setState({
-          movies: responseData.movies,
+          dataSource: this.state.dataSource.cloneWithRows(responseData.movies),
+          loaded: true,
         });
       })
       .done();
@@ -51,7 +52,6 @@ var V2hot = React.createClass({
     if (!this.state.movies) {
       return this.renderLoadingView();
     }
-
     return (
       <ListView
         dataSource={this.state.dataSource}
@@ -60,7 +60,6 @@ var V2hot = React.createClass({
       />
     );
   },
-
   renderLoadingView: function() {
     return (
       <View style={styles.container}>
