@@ -49,7 +49,7 @@ var V2hot = React.createClass({
       .done();
   },
   render: function() {
-    if (!this.state.movies) {
+    if (!this.state.loaded) {
       return this.renderLoadingView();
     }
     return (
