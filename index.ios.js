@@ -12,10 +12,6 @@ var React = require('react-native');
  */
 var REQUEST_URL = 'https://www.v2ex.com/api/topics/hot.json';
 
-var MOCKED_MOVIES_DATA = [
-  {title: 'Title', year: '2015', posters: {thumbnail: 'http://i.imgur.com/UePbdph.jpg'}},
-];
-
 var {
   AppRegistry,
   Image,
@@ -42,7 +38,7 @@ var V2hot = React.createClass({
       .then((response) => response.json())
       .then((responseData) => {
         this.setState({
-          dataSource: this.state.dataSource.cloneWithRows(responseData.movies),
+          dataSource: this.state.dataSource.cloneWithRows(responseData),
           loaded: true,
         });
       })
@@ -55,7 +51,7 @@ var V2hot = React.createClass({
     return (
       <ListView
         dataSource={this.state.dataSource}
-        renderRow={this.renderMovie}
+        renderRow={this.renderTopics}
         style={styles.listView}
       />
     );
@@ -64,16 +60,16 @@ var V2hot = React.createClass({
     return (
       <View style={styles.container}>
         <Text>
-          Loading movies...
+          Loading...
         </Text>
       </View>
     );
   },
-  renderMovie: function(movie) {
+  renderTopics: function(topic) {
     return (
       <View style={styles.container}>
         <Image
-          source={{uri: movie.posters.thumbnail}}
+          source={{uri: topic.member.avatar_large}}
           style={styles.thumbnail}
         />
         <View style={styles.rightContainer}>
@@ -94,8 +90,8 @@ var styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   },
   thumbnail: {
-    width: 53,
-    height: 81,
+    width: 73,
+    height: 73,
   },
   rightContainer: {
     flex: 1,
