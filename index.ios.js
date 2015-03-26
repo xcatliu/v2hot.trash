@@ -74,7 +74,7 @@ var V2hot = React.createClass({
         />
         <View style={styles.rightContainer}>
           <Text style={styles.title}>{topic.title}</Text>
-          <Text style={styles.replies}>{movie.replies}</Text>
+          <Text style={styles.replies}>{topic.replies}</Text>
         </View>
       </View>
     );
