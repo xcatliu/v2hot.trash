@@ -69,7 +69,7 @@ var V2hot = React.createClass({
     return (
       <View style={styles.container}>
         <Image
-          source={{uri: topic.member.avatar_large}}
+          source={{uri: 'https:' + topic.member.avatar_large}}
           style={styles.thumbnail}
         />
         <View style={styles.rightContainer}>
