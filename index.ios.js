@@ -73,8 +73,8 @@ var V2hot = React.createClass({
           style={styles.thumbnail}
         />
         <View style={styles.rightContainer}>
-          <Text style={styles.title}>{movie.title}</Text>
-          <Text style={styles.year}>{movie.year}</Text>
+          <Text style={styles.title}>{topic.title}</Text>
+          <Text style={styles.replies}>{movie.replies}</Text>
         </View>
       </View>
     );
@@ -101,7 +101,7 @@ var styles = StyleSheet.create({
     marginBottom: 8,
     textAlign: 'center',
   },
-  year: {
+  replies: {
     textAlign: 'center',
   },
   listView: {
