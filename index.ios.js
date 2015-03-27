@@ -19,6 +19,7 @@ var {
   StyleSheet,
   Text,
   View,
+  NavigatorIOS
 } = React;
 
 var V2hot = React.createClass({
