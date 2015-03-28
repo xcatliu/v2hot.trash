@@ -10,14 +10,14 @@
 	<string>v2hot</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>AE7A30378D24DD60B3A8A0DA63F4F91C69C76400</key>
+		<key>FF655C93A42A64249F60B03DCB7C44E29035BFC6</key>
 		<string>github.com:xcatliu/v2hot.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>v2hot.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>AE7A30378D24DD60B3A8A0DA63F4F91C69C76400</key>
+		<key>FF655C93A42A64249F60B03DCB7C44E29035BFC6</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>AE7A30378D24DD60B3A8A0DA63F4F91C69C76400</string>
+	<string>FF655C93A42A64249F60B03DCB7C44E29035BFC6</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>AE7A30378D24DD60B3A8A0DA63F4F91C69C76400</string>
+			<string>FF655C93A42A64249F60B03DCB7C44E29035BFC6</string>
 			<key>IDESourceControlWCCName</key>
 			<string>v2hot</string>
 		</dict>
