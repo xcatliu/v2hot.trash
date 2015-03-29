@@ -122,4 +122,4 @@ var styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('v2hot', () => V2hot);
+AppRegistry.registerComponent('v2hot', () => App);
