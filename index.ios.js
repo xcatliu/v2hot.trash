@@ -84,12 +84,14 @@ var V2hot = React.createClass({
 
 var App = React.createClass({
   render: function() {
-    <NavigatorIOS
-      initialRoute={{
-        component: V2hot,
-        title: 'V2HOT'
-      }}
-    />
+    return (
+      <NavigatorIOS
+        initialRoute={{
+          component: V2hot,
+          title: 'V2HOT'
+        }}
+      />
+    );
   }
 });
 
