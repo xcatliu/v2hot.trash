@@ -19,7 +19,8 @@ var {
   StyleSheet,
   Text,
   View,
-  NavigatorIOS
+  NavigatorIOS,
+  TouchableHighlight
 } = React;
 
 var V2hot = React.createClass({
