@@ -69,16 +69,18 @@ var V2hot = React.createClass({
   },
   renderTopics: function(topic) {
     return (
-      <View style={styles.container}>
-        <Image
-          source={{uri: 'https:' + topic.member.avatar_large}}
-          style={styles.thumbnail}
-        />
-        <View style={styles.rightContainer}>
-          <Text style={styles.title}>{topic.title}</Text>
-          <Text style={styles.replies}>{topic.replies}</Text>
+      <TouchableHighlight>
+        <View style={styles.container}>
+          <Image
+            source={{uri: 'https:' + topic.member.avatar_large}}
+            style={styles.thumbnail}
+          />
+          <View style={styles.rightContainer}>
+            <Text style={styles.title}>{topic.title}</Text>
+            <Text style={styles.replies}>{topic.replies}</Text>
+          </View>
         </View>
-      </View>
+      </TouchableHighlight>
     );
   },
 });
