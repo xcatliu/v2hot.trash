@@ -53,7 +53,7 @@ var V2hot = React.createClass({
     return (
       <ListView
         dataSource={this.state.dataSource}
-        renderRow={this.renderTopics}
+        renderRow={this.renderTopic}
         style={styles.listView}
       />
     );
@@ -67,7 +67,7 @@ var V2hot = React.createClass({
       </View>
     );
   },
-  renderTopics: function(topic) {
+  renderTopic: function(topic) {
     return (
       <TouchableHighlight>
         <View style={styles.container}>
