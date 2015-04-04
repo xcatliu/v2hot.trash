@@ -126,7 +126,6 @@ var styles = StyleSheet.create({
     textAlign: 'center',
   },
   listView: {
-    paddingTop: 20,
     backgroundColor: '#F5FCFF',
   },
 });
