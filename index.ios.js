@@ -70,7 +70,7 @@ var V2hot = React.createClass({
   renderTopic: function(topic) {
     return (
       <TouchableHighlight
-        activeOpacity=0.2
+        activeOpacity={0.9}
       >
         <View style={styles.container}>
           <Image
