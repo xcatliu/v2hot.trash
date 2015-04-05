@@ -69,7 +69,9 @@ var V2hot = React.createClass({
   },
   renderTopic: function(topic) {
     return (
-      <TouchableHighlight>
+      <TouchableHighlight
+        activeOpacity=0.2
+      >
         <View style={styles.container}>
           <Image
             source={{uri: 'https:' + topic.member.avatar_large}}
