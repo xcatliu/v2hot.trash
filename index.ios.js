@@ -46,6 +46,9 @@ var V2hot = React.createClass({
       })
       .done();
   },
+  handleTopicPress: function() {
+    console.log(123);
+  },
   render: function() {
     if (!this.state.loaded) {
       return this.renderLoadingView();
@@ -71,6 +74,7 @@ var V2hot = React.createClass({
     return (
       <TouchableHighlight
         activeOpacity={0.9}
+        onPress={this.handleTopicPress}
       >
         <View style={styles.container}>
           <Image
