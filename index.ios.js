@@ -19,6 +19,7 @@ var {
   StyleSheet,
   Text,
   View,
+  Navigator,
   NavigatorIOS,
   TouchableHighlight
 } = React;
