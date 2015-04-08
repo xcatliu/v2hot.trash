@@ -14,7 +14,7 @@ var {
   TouchableHighlight
 } = React;
 
-module.exports = React.createClass({
+var Topics = React.createClass({
   getInitialState: function() {
     return {
       dataSource: new ListView.DataSource({
@@ -23,12 +23,15 @@ module.exports = React.createClass({
       loaded: false,
     };
   },
+})
+
+module.exports = React.createClass({
   render: function() {
     return (
       <NavigatorIOS
         style={styles.wrapper}
         initialRoute={{
-          component: V2hot,
+          component: Topics,
           title: 'V2HOT'
         }}
       />
