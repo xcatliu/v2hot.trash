@@ -10,43 +10,8 @@ var React = require('react-native');
  * For quota reasons we replaced the Rotten Tomatoes' API with a sample data of
  * their very own API that lives in React Native's Github repo.
  */
-var REQUEST_URL = 'https://www.v2ex.com/api/topics/hot.json';
-
-var {
-  AppRegistry,
-  Image,
-  ListView,
-  StyleSheet,
-  Text,
-  View,
-  Navigator,
-  NavigatorIOS,
-  TouchableHighlight
-} = React;
 
 var V2hot = React.createClass({
-  getInitialState: function() {
-    return {
-      dataSource: new ListView.DataSource({
-        rowHasChanged: (row1, row2) => row1 !== row2,
-      }),
-      loaded: false,
-    };
-  },
-  componentDidMount: function() {
-    this.fetchData();
-  },
-  fetchData: function() {
-    fetch(REQUEST_URL)
-      .then((response) => response.json())
-      .then((responseData) => {
-        this.setState({
-          dataSource: this.state.dataSource.cloneWithRows(responseData),
-          loaded: true,
-        });
-      })
-      .done();
-  },
   handleTopicPress: function() {
     console.log(123);
   },

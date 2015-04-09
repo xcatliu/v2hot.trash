@@ -23,7 +23,64 @@ var Topics = React.createClass({
       loaded: false,
     };
   },
-})
+  componentDidMount: function() {
+    this.fetchData();
+  },
+  fetchData: function() {
+    fetch(REQUEST_URL)
+      .then((response) => response.json())
+      .then((responseData) => {
+        this.setState({
+          dataSource: this.state.dataSource.cloneWithRows(responseData),
+          loaded: true,
+        });
+      })
+      .done();
+  },
+  handleTopicPress: function() {
+    console.log(123);
+  },
+  render: function() {
+    if (!this.state.loaded) {
+      return this.renderLoadingView();
+    }
+    return (
+      <ListView
+        dataSource={this.state.dataSource}
+        renderRow={this.renderTopic}
+        style={styles.listView}
+      />
+    );
+  },
+  renderLoadingView: function() {
+    return (
+      <View style={styles.container}>
+        <Text>
+          Loading...
+        </Text>
+      </View>
+    );
+  },
+  renderTopic: function(topic) {
+    return (
+      <TouchableHighlight
+        activeOpacity={0.9}
+        onPress={this.handleTopicPress}
+      >
+        <View style={styles.container}>
+          <Image
+            source={{uri: 'https:' + topic.member.avatar_large}}
+            style={styles.thumbnail}
+          />
+          <View style={styles.rightContainer}>
+            <Text style={styles.title}>{topic.title}</Text>
+            <Text style={styles.replies}>{topic.replies}</Text>
+          </View>
+        </View>
+      </TouchableHighlight>
+    );
+  },
+});
 
 module.exports = React.createClass({
   render: function() {
