@@ -95,3 +95,34 @@ module.exports = React.createClass({
     );
   }
 });
+
+var styles = StyleSheet.create({
+  wrapper: {
+    flex: 1
+  },
+  container: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+  thumbnail: {
+    width: 73,
+    height: 73,
+  },
+  rightContainer: {
+    flex: 1,
+  },
+  title: {
+    fontSize: 20,
+    marginBottom: 8,
+    textAlign: 'center',
+  },
+  replies: {
+    textAlign: 'center',
+  },
+  listView: {
+    backgroundColor: '#F5FCFF',
+  },
+});
