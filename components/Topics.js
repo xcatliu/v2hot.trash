@@ -72,15 +72,13 @@ module.exports = React.createClass({
       <TouchableHighlight
         onPress={this.handleTopicPress}
       >
-        <View style={styles.itemWrapper}>
-          <View style={styles.itemBorder}>
-            <Image
-              source={{uri: 'https:' + topic.member.avatar_large}}
-              style={styles.avatar}
-            />
-            <View style={styles.rightContainer}>
-              <Text style={styles.title}>{topic.title}</Text>
-            </View>
+        <View style={styles.item}>
+          <Image
+            source={{uri: 'https:' + topic.member.avatar_large}}
+            style={styles.avatar}
+          />
+          <View style={styles.rightContainer}>
+            <Text style={styles.title}>{topic.title}</Text>
           </View>
         </View>
       </TouchableHighlight>
@@ -88,26 +86,22 @@ module.exports = React.createClass({
   },
 });
 
-var commonMargin = 12;
-
 var styles = StyleSheet.create({
-  itemWrapper: {
+  item: {
     flex: 1,
     backgroundColor: 'white',
     borderBottomColor: '#ddd',
     borderBottomWidth: 0.5,
-  },
-  itemBorder: {
     flexDirection: 'row',
-    padding: commonMargin,
+    padding: 12,
     justifyContent: 'center',
     alignItems: 'center',
   },
   avatar: {
     width: 36,
     height: 36,
-    borderRadius: 3,
-    marginRight: commonMargin,
+    borderRadius: 4,
+    marginRight: 12,
   },
   rightContainer: {
     flex: 1,
