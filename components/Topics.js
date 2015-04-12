@@ -38,7 +38,7 @@ var Topics = React.createClass({
       .done();
   },
   handleTopicPress: function() {
-    console.log(123);
+    this.props.navigator.push({ id: 'Topics' });
   },
   render: function() {
     if (!this.state.loaded) {
@@ -105,7 +105,7 @@ var styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#fff',
   },
   thumbnail: {
     width: 73,
@@ -123,6 +123,6 @@ var styles = StyleSheet.create({
     textAlign: 'center',
   },
   listView: {
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#fff',
   },
 });
