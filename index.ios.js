@@ -2,24 +2,10 @@
 
 var React = require('react-native');
 
-var V2hot = React.createClass({
-  render: function() {
-    return (
-      <NavigatorIOS
-        style={styles.container}
-        initialRoute={{
-          component: V2hot,
-          title: 'V2HOT'
-        }}
-      />
-    );
-  }
-});
+var {
+  AppRegistry,
+} = React;
 
-var styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
-});
+var V2hot = require('./V2hot')
 
 AppRegistry.registerComponent('v2hot', () => V2hot);
