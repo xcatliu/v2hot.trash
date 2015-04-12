@@ -97,9 +97,6 @@ module.exports = React.createClass({
 });
 
 var styles = StyleSheet.create({
-  wrapper: {
-    flex: 1
-  },
   container: {
     flex: 1,
     flexDirection: 'row',
