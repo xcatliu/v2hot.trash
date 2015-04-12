@@ -12,7 +12,7 @@ var {
   TouchableHighlight
 } = React;
 
-var Topic = React.createClass({
+module.exports = React.createClass({
   render: function() {
     return (
       <View style={styles.container}>
@@ -22,24 +22,7 @@ var Topic = React.createClass({
   },
 });
 
-module.exports = React.createClass({
-  render: function() {
-    return (
-      <NavigatorIOS
-        style={styles.wrapper}
-        initialRoute={{
-          component: Topic,
-          title: 'Hello World'
-        }}
-      />
-    );
-  }
-});
-
 var styles = StyleSheet.create({
-  wrapper: {
-    flex: 1
-  },
   container: {
     flex: 1,
     flexDirection: 'row',

@@ -1,6 +1,9 @@
 'use strict';
 
 var React = require('react-native');
+var fetch = require('fetch');
+
+var Topic = require('./Topic');
 
 var REQUEST_URL = 'https://www.v2ex.com/api/topics/hot.json';
 
@@ -14,7 +17,7 @@ var {
   TouchableHighlight
 } = React;
 
-var Topics = React.createClass({
+module.exports = React.createClass({
   getInitialState: function() {
     return {
       dataSource: new ListView.DataSource({
@@ -38,7 +41,10 @@ var Topics = React.createClass({
       .done();
   },
   handleTopicPress: function() {
-    this.props.navigator.push({ id: 'Topics' });
+    this.props.navigator.push({
+      title: 'Topic',
+      component: Topic
+    });
   },
   render: function() {
     if (!this.state.loaded) {
@@ -54,7 +60,7 @@ var Topics = React.createClass({
   },
   renderLoadingView: function() {
     return (
-      <View style={styles.container}>
+      <View>
         <Text>
           Loading...
         </Text>
@@ -64,17 +70,17 @@ var Topics = React.createClass({
   renderTopic: function(topic) {
     return (
       <TouchableHighlight
-        activeOpacity={0.9}
         onPress={this.handleTopicPress}
       >
-        <View style={styles.container}>
-          <Image
-            source={{uri: 'https:' + topic.member.avatar_large}}
-            style={styles.thumbnail}
-          />
-          <View style={styles.rightContainer}>
-            <Text style={styles.title}>{topic.title}</Text>
-            <Text style={styles.replies}>{topic.replies}</Text>
+        <View style={styles.itemWrapper}>
+          <View style={styles.itemBorder}>
+            <Image
+              source={{uri: 'https:' + topic.member.avatar_large}}
+              style={styles.avatar}
+            />
+            <View style={styles.rightContainer}>
+              <Text style={styles.title}>{topic.title}</Text>
+            </View>
           </View>
         </View>
       </TouchableHighlight>
@@ -82,45 +88,33 @@ var Topics = React.createClass({
   },
 });
 
-module.exports = React.createClass({
-  render: function() {
-    return (
-      <NavigatorIOS
-        style={styles.wrapper}
-        initialRoute={{
-          component: Topics,
-          title: 'V2HOT'
-        }}
-      />
-    );
-  }
-});
+var commonMargin = 12;
 
 var styles = StyleSheet.create({
-  wrapper: {
-    flex: 1
-  },
-  container: {
+  itemWrapper: {
     flex: 1,
+    backgroundColor: 'white',
+    borderBottomColor: '#ddd',
+    borderBottomWidth: 0.5,
+  },
+  itemBorder: {
     flexDirection: 'row',
+    padding: commonMargin,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
   },
-  thumbnail: {
-    width: 73,
-    height: 73,
+  avatar: {
+    width: 36,
+    height: 36,
+    borderRadius: 3,
+    marginRight: commonMargin,
   },
   rightContainer: {
     flex: 1,
   },
   title: {
-    fontSize: 20,
-    marginBottom: 8,
-    textAlign: 'center',
-  },
-  replies: {
-    textAlign: 'center',
+    fontSize: 16,
+    lineHeight: 18,
   },
   listView: {
     backgroundColor: '#fff',
