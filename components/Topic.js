@@ -3,30 +3,30 @@
 var React = require('react-native');
 
 var {
-  Image,
-  ListView,
   StyleSheet,
-  Text,
-  View,
-  NavigatorIOS,
-  TouchableHighlight
+  WebView
 } = React;
 
 module.exports = React.createClass({
+  getUrl: function() {
+    var url = this.props.topic.url;
+    if (url.indexOf('https') === 0) {
+      return url;
+    }
+    return url.replace('http', 'https');
+  },
   render: function() {
     return (
-      <View style={styles.container}>
-        <Text>Hello World</Text>
-      </View>
+      <WebView
+        style={styles.webView}
+        url={this.getUrl()}
+      />
     );
   },
 });
 
 var styles = StyleSheet.create({
-  container: {
+  webView: {
     flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 });
