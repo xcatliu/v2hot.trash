@@ -40,10 +40,11 @@ module.exports = React.createClass({
       })
       .done();
   },
-  handleTopicPress: function() {
+  handleTopicPress: function(topic: Object) {
     this.props.navigator.push({
-      title: 'Topic',
-      component: Topic
+      title: '/t/' + topic.id,
+      component: Topic,
+      passProps: {topic}
     });
   },
   render: function() {
@@ -67,10 +68,10 @@ module.exports = React.createClass({
       </View>
     );
   },
-  renderTopic: function(topic) {
+  renderTopic: function(topic: Object) {
     return (
       <TouchableHighlight
-        onPress={this.handleTopicPress}
+        onPress={() => this.handleTopicPress(topic)}
       >
         <View style={styles.item}>
           <Image
