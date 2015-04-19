@@ -14,28 +14,68 @@ var {
   Text,
   View,
   NavigatorIOS,
-  TouchableHighlight
+  TouchableHighlight,
+  AsyncStorage
 } = React;
 
 module.exports = React.createClass({
   getInitialState: function() {
     return {
-      dataSource: new ListView.DataSource({
-        rowHasChanged: (row1, row2) => row1 !== row2,
-      }),
-      loaded: false,
+      topics: []
     };
   },
-  componentDidMount: function() {
-    this.fetchData();
+  componentWillMount: function() {
+    this.dataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    this.topicsMap = {};
   },
-  fetchData: function() {
+  componentDidMount: function() {
+    AsyncStorage.getItem('topics')
+      .then((topics) => {
+        if (topics === null) {
+          topics = [];
+        } else {
+          topics = JSON.parse(topics);
+        }
+        this.setState({topics: topics}, () => {
+          this.createTopicsMap();
+          this.fetchTopics();
+        });
+      })
+      .done();
+  },
+  createTopicsMap: function() {
+    this.state.topics.forEach((topic, index) => {
+      this.topicsMap[topic.id] = topic;
+    });
+  },
+  fetchTopics: function() {
     fetch(REQUEST_URL)
       .then((response) => response.json())
       .then((responseData) => {
-        this.setState({
-          dataSource: this.state.dataSource.cloneWithRows(responseData),
-          loaded: true,
+        this.mergeTopics(responseData);
+      })
+      .done();
+  },
+  mergeTopics: function(newTopics: Array) {
+    newTopics.reverse().forEach((topic) => {
+      if (!this.topicsMap[topic.id]) {
+        Object.assign(topic, {
+          index: this.state.topics.length,
+          viewed: false,
+          new_replies: true
+        });
+        this.state.topics.push(topic);
+        this.topicsMap[topic.id] = topic;
+        return;
+      }
+      Object.assign(this.topicsMap[topic.id], {
+        new_replies: this.topicsMap[topic.id].replies < topic.replies
+      }, ...topic);
+    });
+    AsyncStorage.setItem('topics', JSON.stringify(this.state.topics))
+      .then(() => {
+        this.setState({topics: this.state.topics}, () => {
+          this.setState({loaded: true});
         });
       })
       .done();
@@ -53,7 +93,7 @@ module.exports = React.createClass({
     }
     return (
       <ListView
-        dataSource={this.state.dataSource}
+        dataSource={this.dataSource.cloneWithRows(this.state.topics.reverse())}
         renderRow={this.renderTopic}
         style={styles.listView}
       />
@@ -91,7 +131,7 @@ var styles = StyleSheet.create({
   item: {
     flex: 1,
     backgroundColor: 'white',
-    borderBottomColor: '#ddd',
+    borderBottomColor: '#d9d9d9', // Pick from WeChat
     borderBottomWidth: 0.5,
     flexDirection: 'row',
     padding: 12,
@@ -112,6 +152,6 @@ var styles = StyleSheet.create({
     lineHeight: 18,
   },
   listView: {
-    backgroundColor: '#fff',
+    backgroundColor: '#f1f0f5', // Pick from WeChat
   },
 });

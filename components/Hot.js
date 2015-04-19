@@ -1,5 +1,3 @@
-'use strict';
-
 var React = require('react-native');
 
 var {
@@ -15,7 +13,7 @@ module.exports = React.createClass({
       <NavigatorIOS
         style={styles.container}
         initialRoute={{
-          title: 'V2HOT',
+          title: 'Topics',
           component: Topics
         }}
       />
@@ -26,6 +24,5 @@ module.exports = React.createClass({
 var styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
   },
 });

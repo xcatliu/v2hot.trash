@@ -3,7 +3,7 @@
 var React = require('react-native');
 
 var {
-  AppRegistry,
+  AppRegistry
 } = React;
 
-AppRegistry.registerComponent('v2hot', () => require('./components/index'));
+AppRegistry.registerComponent('v2hot', () => require('./components/App'));
