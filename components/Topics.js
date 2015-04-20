@@ -1,11 +1,6 @@
 'use strict';
 
 var React = require('react-native');
-var fetch = require('fetch');
-
-var Topic = require('./Topic');
-
-var REQUEST_URL = 'https://www.v2ex.com/api/topics/hot.json';
 
 var {
   Image,
@@ -13,79 +8,12 @@ var {
   StyleSheet,
   Text,
   View,
-  NavigatorIOS,
-  TouchableHighlight,
-  AsyncStorage
+  TouchableHighlight
 } = React;
 
 module.exports = React.createClass({
-  getInitialState: function() {
-    return {
-      topics: []
-    };
-  },
   componentWillMount: function() {
     this.dataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    this.topicsMap = {};
-  },
-  componentDidMount: function() {
-    AsyncStorage.getItem('topics')
-      .then((topics) => {
-        if (topics === null) {
-          topics = [];
-        } else {
-          topics = JSON.parse(topics);
-        }
-        this.setState({topics: topics}, () => {
-          this.createTopicsMap();
-          this.fetchTopics();
-        });
-      })
-      .done();
-  },
-  createTopicsMap: function() {
-    this.state.topics.forEach((topic, index) => {
-      this.topicsMap[topic.id] = topic;
-    });
-  },
-  fetchTopics: function() {
-    fetch(REQUEST_URL)
-      .then((response) => response.json())
-      .then((responseData) => {
-        this.mergeTopics(responseData);
-      })
-      .done();
-  },
-  mergeTopics: function(newTopics: Array) {
-    newTopics.reverse().forEach((topic) => {
-      if (!this.topicsMap[topic.id]) {
-        Object.assign(topic, {
-          index: this.state.topics.length,
-          viewed: false,
-          new_replies: true
-        });
-        this.state.topics.push(topic);
-        this.topicsMap[topic.id] = topic;
-        return;
-      }
-      Object.assign(this.topicsMap[topic.id], {
-        new_replies: this.topicsMap[topic.id].replies < topic.replies
-      }, ...topic);
-    });
-    AsyncStorage.setItem('topics', JSON.stringify(this.state.topics))
-      .then(() => {
-        this.setState({topics: this.state.topics}, () => {
-          this.setState({loaded: true});
-        });
-      })
-      .done();
-  },
-  handleTopicPress: function(topic: Object) {
-    this.props.navigator.push({
-      title: '/t/' + topic.id,
-      component: Topic,
-      passProps: {topic}
-    });
   },
   render: function() {
     if (!this.state.loaded) {
@@ -93,7 +21,7 @@ module.exports = React.createClass({
     }
     return (
       <ListView
-        dataSource={this.dataSource.cloneWithRows(this.state.topics.reverse())}
+        dataSource={this.dataSource.cloneWithRows(this.props.topics.reverse())}
         renderRow={this.renderTopic}
         style={styles.listView}
       />
@@ -111,8 +39,7 @@ module.exports = React.createClass({
   renderTopic: function(topic: Object) {
     return (
       <TouchableHighlight
-        onPress={() => this.handleTopicPress(topic)}
-      >
+        onPress={() => this.props.onTopicPress(topic)}>
         <View style={styles.item}>
           <Image
             source={{uri: 'https:' + topic.member.avatar_large}}

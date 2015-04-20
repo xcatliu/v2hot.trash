@@ -6,6 +6,7 @@ var {
   NavigatorIOS,
   ScrollView,
   TouchableHighlight,
+  AlertIOS,
   StyleSheet
 } = React;
 
@@ -24,11 +25,14 @@ module.exports = React.createClass({
 });
 
 var Settings = React.createClass({
+  handleClearTopicsDataPress: function() {
+
+  },
   render: function() {
     return (
       <ScrollView style={styles.scrollView}>
         <View style={styles.settingsGroup}>
-          <TouchableHighlight>
+          <TouchableHighlight onPress={this.handleClearTopicsDataPress}>
             <View style={styles.settingsItem}>
               <Text style={styles.settingsItemDangerText}>Clear Topics Data</Text>
             </View>
