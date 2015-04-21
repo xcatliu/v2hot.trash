@@ -6,4 +6,4 @@ var {
   AppRegistry
 } = React;
 
-AppRegistry.registerComponent('v2hot', () => require('./components/App'));
+AppRegistry.registerComponent('v2hot', () => require('./lib/App'));
