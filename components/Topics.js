@@ -15,25 +15,17 @@ module.exports = React.createClass({
   componentWillMount: function() {
     this.dataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
   },
+  componentWillReceiveProps: function(nextProps) {
+    debugger
+  },
   render: function() {
-    if (!this.state.loaded) {
-      return this.renderLoadingView();
-    }
+    debugger
     return (
       <ListView
         dataSource={this.dataSource.cloneWithRows(this.props.topics.reverse())}
         renderRow={this.renderTopic}
         style={styles.listView}
       />
-    );
-  },
-  renderLoadingView: function() {
-    return (
-      <View>
-        <Text>
-          Loading...
-        </Text>
-      </View>
     );
   },
   renderTopic: function(topic: Object) {

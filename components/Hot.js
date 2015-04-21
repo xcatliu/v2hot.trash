@@ -6,15 +6,24 @@ var {
 } = React;
 
 var Topics = require('./Topics');
+var Topic = require('./Topic');
 
 module.exports = React.createClass({
+  handleTopicPress: function(topic: Object) {
+    this.props.navigator.push({
+      title: '/t/' + topic.id,
+      component: Topic,
+      passProps: {topic}
+    });
+  },
   render: function() {
     return (
       <NavigatorIOS
         style={styles.container}
         initialRoute={{
           title: 'Topics',
-          component: Topics
+          component: Topics,
+          passProps: {...this.props}
         }}
       />
     );

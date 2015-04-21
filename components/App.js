@@ -3,7 +3,8 @@
 var React = require('react-native');
 
 var {
-  TabBarIOS
+  TabBarIOS,
+  AsyncStorage
 } = React;
 
 var Hot = require('./Hot');
@@ -45,7 +46,7 @@ module.exports = React.createClass({
     fetch(REQUEST_URL)
       .then((response) => response.json())
       .then((responseData) => {
-        this.mergeTopics(responseData);
+        this.updateTopics(responseData);
       })
       .done();
   },
@@ -67,9 +68,7 @@ module.exports = React.createClass({
     });
     AsyncStorage.setItem('topics', JSON.stringify(this.state.topics))
       .then(() => {
-        this.setState({topics: this.state.topics}, () => {
-          this.setState({loaded: true});
-        });
+        this.setState({topics: this.state.topics});
       })
       .done();
   },
@@ -83,7 +82,7 @@ module.exports = React.createClass({
           onPress={() => {
             this.setState({selectedTab: 'Hot'});
           }}>
-          <Hot/>
+          <Hot {...this.state}/>
         </TabBarIOS.Item>
         <TabBarIOS.Item
           title='Settings'
